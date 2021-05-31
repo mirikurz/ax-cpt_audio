@@ -1,0 +1,94 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title> ax-cpt with audio files</title>
+    <script src="jspsych-6.3.0/jspsych.js"></script>
+    <script src="jspsych-6.3.0/plugins/jspsych-html-keyboard-response.js"></script>
+    <link href="jspsych-6.3.0/css/jspsych.css" rel="stylesheet" type="text/css">
+  </head>
+  <body>  </body>
+  <script>
+
+// instructions
+var instructions_1 = {
+      type: 'html-button-response',
+      stimulus: '<div style="width: 800px;">'+
+        '<p>This experiment will test your ability to hold information in short-term, temporary memory. This is called working memory.</p>'+
+        '</div>',
+      choices: ["Continue"]
+    }
+    timeline.push(instructions_1);
+
+    var instructions_2 = {
+      type: 'html-button-response',
+      stimulus: '<div style="width: 800px;">'+
+        '<p>You will see a sequence of letters presented one at a time. Your task is to determine if the letter on the screen matches '+
+        'the letter that appeared two letters before.</p>'+
+        '<p>If the letter is match <span style="font-weight: bold;">press the M key.</span></p>'+
+        '<p>For example, if you saw the sequence X, C, V, B, V, X you would press the M key when the second V appeared on the screen.</p>'+
+        '<p>You do not need to press any key when there is not a match.</p>'+
+        '</div>',
+      choices: ["Continue"]
+    }
+    timeline.push(instructions_2);
+
+    var instructions_3 = {
+      type: 'html-button-response',
+      stimulus: '<div style="width: 800px;">'+
+        '<p>The sequence will begin on the next screen.</p>'+
+        '<p>Remember: press the M key if the letter on the screen matches the letter that appeared two letters ago.</p>'+
+        '</div>',
+      choices: ["I'm ready to start!"],
+      post_trial_gap: 1000
+    }
+    timeline.push(instructions_3);
+
+
+
+      var timeline = [];
+
+    var preload = {
+        type: 'preload',
+        audio: ['baronRed7.wav', 'baronRed1.wav']
+    }
+    timeline.push(preload)
+
+    /* Test Trials */
+    var test_stimuli = [
+        {stimulus: "baronRed7.wav", correct_response: 'f'},
+        {stimulus: "baronRed1.wav", correct_response: 'j'}
+    ];
+
+    var fixation = {
+        type: 'html-keyboard-response',
+        stimulus: '<div style="font-size:60px;">+</div>',
+      choices: jsPsych.NO_KEYS,
+      trial_duration: function(){
+        return jsPsych.randomization.sampleWithoutReplacement([250, 500, 750, 1000, 1250, 1500, 1750, 2000], 1)[0];
+      },
+      data: {
+        task: 'fixation'
+    }
+    }
+
+    var test = {
+      type: "html-keyboard-response",
+      stimulus: jsPsych.timelineVariable('stimulus'),
+      choices: ['f', 'j'],
+      data: {
+        task: 'response',
+        correct_response: jsPsych.timelineVariable('correct_response')
+      },
+      on_finish: function(data){
+        data.correct = jsPsych.pluginAPI.compareKeys(data.response, data.correct_response);
+      }
+    }
+    var test_procedure = {
+      timeline: [fixation, test],
+      timeline_variables: test_stimuli,
+      repetitions: 5,
+      randomize_order: true
+    }
+    timeline.push(test_procedure)
+</script>
+</html>
