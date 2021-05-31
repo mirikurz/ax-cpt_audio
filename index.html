@@ -2,12 +2,16 @@
 <html>
   <head>
     <title> ax-cpt with audio files</title>
-    <script src="jspsych-6.3.0/jspsych.js"></script>
-    <script src="jspsych-6.3.0/plugins/jspsych-html-keyboard-response.js"></script>
-    <link href="jspsych-6.3.0/css/jspsych.css" rel="stylesheet" type="text/css">
+    <script src="jspsych-6.3.1/jspsych.js"></script>
+    <script src="jspsych-6.3.1/plugins/jspsych-html-button-response.js"></script>
+    <script src="jspsych-6.3.1/plugins/jspsych-html-keyboard-response.js"></script>
+    <script src="jspsych-6.3.1/plugins/jspsych-preload.js"></script>
+    <link href="jspsych-6.3.1/css/jspsych.css" rel="stylesheet" type="text/css">
   </head>
   <body>  </body>
   <script>
+
+var timeline = [];
 
 // instructions
 var instructions_1 = {
@@ -45,7 +49,7 @@ var instructions_1 = {
 
 
 
-      var timeline = [];
+      //var timeline = [];
 
     var preload = {
         type: 'preload',
@@ -90,5 +94,15 @@ var instructions_1 = {
       randomize_order: true
     }
     timeline.push(test_procedure)
+
+
+    /* start the experiment */
+        jsPsych.init({
+          timeline: timeline,
+          on_finish: function() {
+            jsPsych.data.displayData();
+          }
+        });
+
 </script>
 </html>
