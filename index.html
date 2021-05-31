@@ -52,9 +52,17 @@ var instructions_1 = {
       //var timeline = [];
 
     var preload = {
-        type: 'preload',
-        audio: ['baronRed7.wav', 'baronRed1.wav']
-    }
+      type: 'preload',
+      audio: ['baronRed7.wav', 'baronRed1.wav'],
+      on_success: function(file) {
+        console.log('File loaded: ',file);
+      },
+      on_error: function(file) {
+        console.log('Error loading file: ',file);
+      }
+      };
+
+
     timeline.push(preload)
 
     /* Test Trials */
