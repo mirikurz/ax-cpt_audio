@@ -68,19 +68,21 @@ var instructions_1 = {
 
     /* Test Trials */
     var test_stimuli = [
-        {stimulus: "baronRed7.wav", correct_response: 'f'},
-        {stimulus: "baronRed1.wav", correct_response: 'j'}
+        {stimulus: "baronRed7.wav", degradation_level: 0},
+        {stimulus: "baronRed1.wav", degradation_level: 0},
+        {stimulus: "charlieRed1.wav", degradation_level: 1},
+        {stimulus: "charlieRed7.wav", degradation_level: 1}
     ];
     
     /* attempt to add a variable with degraded quality */
-    var test_stimuli_deg = [
-      {stimulus: "charlieRed1.wav", correct_response: 'f'},
-      {stimulus: "charlieRed7.wav", correct_response: 'j'}
-      ];
+    //var test_stimuli_deg = [
+    //  {stimulus: "charlieRed1.wav", correct_response: 'f'},
+    //  {stimulus: "charlieRed7.wav", correct_response: 'j'}
+    //  ];
 
    /* further attempt */
-    var myArray =  [test_stimuli, test_stimuli_deg]
-    var shuffledArray = [jsPsych.randomization.repeat(myArray, 2);
+    //var myArray =  [test_stimuli, test_stimuli_deg]
+    //var shuffledArray = [jsPsych.randomization.repeat(myArray, 2)]
                          
     var fixation = {
         type: 'html-keyboard-response',
@@ -98,13 +100,17 @@ var instructions_1 = {
     type: 'audio-button-response',
     stimulus: jsPsych.timelineVariable('stimulus'),
     choices: ['Low', 'High'],
-    prompt: "<p>Is the pitch high or low?</p>"
+    prompt: "<p>Is the pitch high or low?</p>",
+    data: {
+      task: 'response',
+      degradation_level: jsPsych.timelineVariable('degradation_level')
+    }
     };
 
 
     var test_procedure = {
       timeline: [fixation, test],
-      timeline_variables: [test_stimuli, test_stimuli_deg],
+      timeline_variables: test_stimuli,
       repetitions: 5,
       randomize_order: true
     }
