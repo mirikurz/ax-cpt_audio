@@ -54,7 +54,7 @@ var instructions_1 = {
 
     var preload = {
       type: 'preload',
-      audio: ['baronRed7.wav', 'baronRed1.wav'],
+      audio: ['baronRed7.wav', 'baronRed1.wav', 'charlieRed7.wav', 'charlieRed1.wav'],
       on_success: function(file) {
         console.log('File loaded: ',file);
       },
@@ -71,6 +71,12 @@ var instructions_1 = {
         {stimulus: "baronRed7.wav", correct_response: 'f'},
         {stimulus: "baronRed1.wav", correct_response: 'j'}
     ];
+    
+    /* attempt to add a variable with degraded quality */
+    var test_stimuli_deg = [
+      {stimulus: "charlieRed1.wav", correct_response: 'f'},
+      {stimulus: "charlieRed7.wav", correct_response: 'j'}
+      ];
 
     var fixation = {
         type: 'html-keyboard-response',
@@ -94,7 +100,7 @@ var instructions_1 = {
 
     var test_procedure = {
       timeline: [fixation, test],
-      timeline_variables: test_stimuli,
+      timeline_variables: [test_stimuli, test_stimuli_deg],
       repetitions: 5,
       randomize_order: true
     }
