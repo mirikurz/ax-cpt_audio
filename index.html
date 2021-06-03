@@ -70,10 +70,10 @@
 
   /* Test Trials */
   var test_stimuli = [
-    { stimulus: "baronRed7.wav", degradation_level: 0 },
-    { stimulus: "baronRed1.wav", degradation_level: 0 },
-    { stimulus: "charlieRed1.wav", degradation_level: 1 },
-    { stimulus: "charlieRed7.wav", degradation_level: 1 }
+    { stimulus: "baronRed7.wav", degradation_level: 0, format: 0 },
+    { stimulus: "baronRed1.wav", degradation_level: 0, format: 1 },
+    { stimulus: "charlieRed1.wav", degradation_level: 1, format: 2 },
+    { stimulus: "charlieRed7.wav", degradation_level: 1, formaat: 0 }
   ];
 
   /* attempt to add a variable with degraded quality */
@@ -105,7 +105,8 @@
     prompt: "<p>Is the pitch high or low?</p>",
     data: {
       task: 'response',
-      degradation_level: jsPsych.timelineVariable('degradation_level')
+      degradation_level: jsPsych.timelineVariable('degradation_level'), 
+      format: jsPsych.timelineVariable('format')
     }
   };
 
