@@ -17,6 +17,7 @@
   var timeline = [];
 
   // instructions
+  // keep instructions 1?
   var instructions_1 = {
     type: 'html-button-response',
     stimulus: '<div style="width: 800px;">' +
@@ -29,11 +30,7 @@
   var instructions_2 = {
     type: 'html-button-response',
     stimulus: '<div style="width: 800px;">' +
-      '<p>You will see a sequence of letters presented one at a time. Your task is to determine if the letter on the screen matches ' +
-      'the letter that appeared two letters before.</p>' +
-      '<p>If the letter is match <span style="font-weight: bold;">press the M key.</span></p>' +
-      '<p>For example, if you saw the sequence X, C, V, B, V, X you would press the M key when the second V appeared on the screen.</p>' +
-      '<p>You do not need to press any key when there is not a match.</p>' +
+      '<p>You will hear different audio files which all have the same structure: X bla Y bla Z. When you hear "XYZ", that is your target and you would click on "Match". For every other stimulus, you click on "Mismatch". </p>' +
       '</div>',
     choices: ["Continue"]
   }
@@ -42,8 +39,8 @@
   var instructions_3 = {
     type: 'html-button-response',
     stimulus: '<div style="width: 800px;">' +
-      '<p>The sequence will begin on the next screen.</p>' +
-      '<p>Remember: press the M key if the letter on the screen matches the letter that appeared two letters ago.</p>' +
+      '<p>The audio will start playing on the next screen.</p>' +
+      '<p>Remember: press "Match" if the audio is "XYZ" .</p>' +
       '</div>',
     choices: ["I'm ready to start!"],
     post_trial_gap: 1000
@@ -101,8 +98,8 @@
   var test = {
     type: 'audio-button-response',
     stimulus: jsPsych.timelineVariable('stimulus'),
-    choices: ['Low', 'High'],
-    prompt: "<p>Is the pitch high or low?</p>",
+    choices: ['Match', 'Mismatch'],
+    prompt: "<p>Does the audio match the target?</p>",
     data: {
       task: 'response',
       degradation_level: jsPsych.timelineVariable('degradation_level'), 
