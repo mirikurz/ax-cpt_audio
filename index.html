@@ -53,7 +53,10 @@
 
   var preload = {
     type: 'preload',
-    audio: ['crm_sentences/audio/bad/baronRed4.opus', 'crm_sentences/audio/bad/baronRed1.opus', 'crm_sentences/audio/bad/charlieRed4.opus', 'crm_sentences/audio/bad/charlieRed1.opus'],
+    audio: ['crm_sentences/audio/bad/baronRed4.opus', 'crm_sentences/audio/bad/baronRed1.opus', 'crm_sentences/audio/bad/baronRed2.opus', 'crm_sentences/audio/bad/baronRed3.opus', 'crm_sentences/audio/bad/baronRed5.opus', 
+            'crm_sentences/audio/bad/charlieRed4.opus', 'crm_sentences/audio/bad/charlieRed1.opus', 'crm_sentences/audio/bad/charlieRed2.opus', 'crm_sentences/audio/bad/charlieRed3.opus', 'crm_sentences/audio/bad/charlieRed5.opus',
+           'crm_sentences/audio/bad/tigerRed1.opus', 'crm_sentences/audio/bad/tigerRed2.opus', 'crm_sentences/audio/bad/tigerRed3.opus', 'crm_sentences/audio/bad/tigerRed4.opus','crm_sentences/audio/bad/tigerRed5.opus',
+           'crm_sentences/audio/bad/eagleRed1.opus', 'crm_sentences/audio/bad/eagleRed2.opus', 'crm_sentences/audio/bad/eagleRed3.opus', 'crm_sentences/audio/bad/eagleRed4.opus', 'crm_sentences/audio/bad/eagleRed5.opus'],
     on_success: function (file) {
       console.log('File loaded: ', file);
     },
@@ -66,6 +69,7 @@
   timeline.push(preload)
 
   /* Test Trials */
+  // degradation_level: 3 = full, 2 = good, 1 = intermediate, 0 = bad; format: 0 = AX, 1 = AY, 2 = BX, 3 = BY
   var test_stimuli = [
     { stimulus: "baronRed4.opus", degradation_level: 0, format: 0 },
     { stimulus: "baronRed1.opus", degradation_level: 0, format: 1 },
