@@ -56,7 +56,24 @@
     audio: ['crm_sentences/audio/bad/baronRed4.opus', 'crm_sentences/audio/bad/baronRed1.opus', 'crm_sentences/audio/bad/baronRed2.opus', 'crm_sentences/audio/bad/baronRed3.opus', 'crm_sentences/audio/bad/baronRed5.opus', 
             'crm_sentences/audio/bad/charlieRed4.opus', 'crm_sentences/audio/bad/charlieRed1.opus', 'crm_sentences/audio/bad/charlieRed2.opus', 'crm_sentences/audio/bad/charlieRed3.opus', 'crm_sentences/audio/bad/charlieRed5.opus',
            'crm_sentences/audio/bad/tigerRed1.opus', 'crm_sentences/audio/bad/tigerRed2.opus', 'crm_sentences/audio/bad/tigerRed3.opus', 'crm_sentences/audio/bad/tigerRed4.opus','crm_sentences/audio/bad/tigerRed5.opus',
-           'crm_sentences/audio/bad/eagleRed1.opus', 'crm_sentences/audio/bad/eagleRed2.opus', 'crm_sentences/audio/bad/eagleRed3.opus', 'crm_sentences/audio/bad/eagleRed4.opus', 'crm_sentences/audio/bad/eagleRed5.opus'],
+           'crm_sentences/audio/bad/eagleRed1.opus', 'crm_sentences/audio/bad/eagleRed2.opus', 'crm_sentences/audio/bad/eagleRed3.opus', 'crm_sentences/audio/bad/eagleRed4.opus', 'crm_sentences/audio/bad/eagleRed5.opus',
+            
+           'crm_sentences/audio/intermediate/baronRed4.opus', 'crm_sentences/audio/intermediate/baronRed1.opus', 'crm_sentences/audio/intermediate/baronRed2.opus', 'crm_sentences/audio/intermediate/baronRed3.opus', 'crm_sentences/audio/intermediate/baronRed5.opus', 
+            'crm_sentences/audio/intermediate/charlieRed4.opus', 'crm_sentences/audio/intermediate/charlieRed1.opus', 'crm_sentences/audio/intermediate/charlieRed2.opus', 'crm_sentences/audio/intermediate/charlieRed3.opus', 'crm_sentences/audio/intermediate/charlieRed5.opus',
+           'crm_sentences/audio/intermediate/tigerRed1.opus', 'crm_sentences/audio/intermediate/tigerRed2.opus', 'crm_sentences/audio/intermediate/tigerRed3.opus', 'crm_sentences/audio/intermediate/tigerRed4.opus','crm_sentences/audio/intermediate/tigerRed5.opus',
+           'crm_sentences/audio/intermediate/eagleRed1.opus', 'crm_sentences/audio/intermediate/eagleRed2.opus', 'crm_sentences/audio/intermediate/eagleRed3.opus', 'crm_sentences/audio/intermediate/eagleRed4.opus', 'crm_sentences/audio/intermediate/eagleRed5.opus',
+            
+            'crm_sentences/audio/good/baronRed4.opus', 'crm_sentences/audio/good/baronRed1.opus', 'crm_sentences/audio/good/baronRed2.opus', 'crm_sentences/audio/good/baronRed3.opus', 'crm_sentences/audio/good/baronRed5.opus', 
+            'crm_sentences/audio/good/charlieRed4.opus', 'crm_sentences/audio/good/charlieRed1.opus', 'crm_sentences/audio/good/charlieRed2.opus', 'crm_sentences/audio/good/charlieRed3.opus', 'crm_sentences/audio/good/charlieRed5.opus',
+           'crm_sentences/audio/good/tigerRed1.opus', 'crm_sentences/audio/good/tigerRed2.opus', 'crm_sentences/audio/good/tigerRed3.opus', 'crm_sentences/audio/good/tigerRed4.opus','crm_sentences/audio/good/tigerRed5.opus',
+           'crm_sentences/audio/good/eagleRed1.opus', 'crm_sentences/audio/good/eagleRed2.opus', 'crm_sentences/audio/good/eagleRed3.opus', 'crm_sentences/audio/good/eagleRed4.opus', 'crm_sentences/audio/good/eagleRed5.opus',
+            
+            'crm_sentences/audio/full/baronRed4.m4a', 'crm_sentences/audio/full/baronRed1.m4a', 'crm_sentences/audio/full/baronRed2.m4a', 'crm_sentences/audio/full/baronRed3.m4a', 'crm_sentences/audio/full/baronRed5.m4a', 
+            'crm_sentences/audio/full/charlieRed4.m4a', 'crm_sentences/audio/full/charlieRed1.m4a', 'crm_sentences/audio/full/charlieRed2.m4a', 'crm_sentences/audio/full/charlieRed3.m4a', 'crm_sentences/audio/full/charlieRed5.m4a',
+           'crm_sentences/audio/full/tigerRed1.m4a', 'crm_sentences/audio/full/tigerRed2.m4a', 'crm_sentences/audio/full/tigerRed3.m4a', 'crm_sentences/audio/full/tigerRed4.m4a','crm_sentences/audio/full/tigerRed5.m4a',
+           'crm_sentences/audio/full/eagleRed1.m4a', 'crm_sentences/audio/full/eagleRed2.m4a', 'crm_sentences/audio/full/eagleRed3.m4a', 'crm_sentences/audio/full/eagleRed4.m4a', 'crm_sentences/audio/full/eagleRed5.m4a'],
+    
+    
     on_success: function (file) {
       console.log('File loaded: ', file);
     },
@@ -69,12 +86,94 @@
   timeline.push(preload)
 
   /* Test Trials */
-  // degradation_level: 3 = full, 2 = good, 1 = intermediate, 0 = bad; format: 0 = AX, 1 = AY, 2 = BX, 3 = BY
+  // degradation_level: 0 = full, 1 = good, 2 = intermediate, 3 = bad; format: 0 = AX, 1 = AY, 2 = BX, 3 = BY
   var test_stimuli = [
-    { stimulus: "baronRed4.opus", degradation_level: 0, format: 0 },
-    { stimulus: "baronRed1.opus", degradation_level: 0, format: 1 },
-    { stimulus: "charlieRed1.opus", degradation_level: 1, format: 2 },
-    { stimulus: "charlieRed4.opus", degradation_level: 1, format: 0 }
+    { stimulus: "crm_sentences/audio/bad/baronRed1.opus", degradation_level: 3, format: 0 },
+    { stimulus: "crm_sentences/audio/bad/baronRed2.opus", degradation_level: 3, format: 1 },
+    { stimulus: "crm_sentences/audio/bad/baronRed3.opus", degradation_level: 3, format: 2 },
+    { stimulus: "crm_sentences/audio/bad/baronRed4.opus", degradation_level: 3, format: 0 },
+    { stimulus: "crm_sentences/audio/bad/baronRed5.opus", degradation_level: 3, format: 0 },
+    { stimulus: "crm_sentences/audio/bad/charlieRed1.opus", degradation_level: 3, format: 0 },
+    { stimulus: "crm_sentences/audio/bad/charlieRed2.opus", degradation_level: 3, format: 0 },
+    { stimulus: "crm_sentences/audio/bad/charlieRed3.opus", degradation_level: 3, format: 0 },
+    { stimulus: "crm_sentences/audio/bad/charlieRed4.opus", degradation_level: 3, format: 0 },
+    { stimulus: "crm_sentences/audio/bad/charlieRed5.opus", degradation_level: 3, format: 0 },
+    { stimulus: "crm_sentences/audio/bad/tigerRed1.opus", degradation_level: 3, format: 0 },
+    { stimulus: "crm_sentences/audio/bad/tigerRed2.opus", degradation_level: 3, format: 0 },
+    { stimulus: "crm_sentences/audio/bad/tigerRed3.opus", degradation_level: 3, format: 0 },
+    { stimulus: "crm_sentences/audio/bad/tigerRed4.opus", degradation_level: 3, format: 0 },
+    { stimulus: "crm_sentences/audio/bad/tigerRed5.opus", degradation_level: 3, format: 0 },
+    { stimulus: "crm_sentences/audio/bad/eaglyRed1.opus", degradation_level: 3, format: 0 },
+    { stimulus: "crm_sentences/audio/bad/eaglyRed2.opus", degradation_level: 3, format: 0 },
+    { stimulus: "crm_sentences/audio/bad/eaglyRed3.opus", degradation_level: 3, format: 0 },
+    { stimulus: "crm_sentences/audio/bad/eaglyRed4.opus", degradation_level: 3, format: 0 },
+    { stimulus: "crm_sentences/audio/bad/eaglyRed5.opus", degradation_level: 3, format: 0 },
+    
+    { stimulus: "crm_sentences/audio/intermediate/baronRed1.opus", degradation_level: 2, format: 0 },
+    { stimulus: "crm_sentences/audio/intermediate/baronRed2.opus", degradation_level: 2, format: 1 },
+    { stimulus: "crm_sentences/audio/intermediate/baronRed2.opus", degradation_level: 2, format: 2 },
+    { stimulus: "crm_sentences/audio/intermediate/baronRed4.opus", degradation_level: 2, format: 0 },
+    { stimulus: "crm_sentences/audio/intermediate/baronRed5.opus", degradation_level: 2, format: 0 },
+    { stimulus: "crm_sentences/audio/intermediate/charlieRed1.opus", degradation_level: 2, format: 0 },
+    { stimulus: "crm_sentences/audio/intermediate/charlieRed2.opus", degradation_level: 2, format: 0 },
+    { stimulus: "crm_sentences/audio/intermediate/charlieRed2.opus", degradation_level: 2, format: 0 },
+    { stimulus: "crm_sentences/audio/intermediate/charlieRed4.opus", degradation_level: 2, format: 0 },
+    { stimulus: "crm_sentences/audio/intermediate/charlieRed5.opus", degradation_level: 2, format: 0 },
+    { stimulus: "crm_sentences/audio/intermediate/tigerRed1.opus", degradation_level: 2, format: 0 },
+    { stimulus: "crm_sentences/audio/intermediate/tigerRed2.opus", degradation_level: 2, format: 0 },
+    { stimulus: "crm_sentences/audio/intermediate/tigerRed2.opus", degradation_level: 2, format: 0 },
+    { stimulus: "crm_sentences/audio/intermediate/tigerRed4.opus", degradation_level: 2, format: 0 },
+    { stimulus: "crm_sentences/audio/intermediate/tigerRed5.opus", degradation_level: 2, format: 0 },
+    { stimulus: "crm_sentences/audio/intermediate/eaglyRed1.opus", degradation_level: 2, format: 0 },
+    { stimulus: "crm_sentences/audio/intermediate/eaglyRed2.opus", degradation_level: 2, format: 0 },
+    { stimulus: "crm_sentences/audio/intermediate/eaglyRed2.opus", degradation_level: 2, format: 0 },
+    { stimulus: "crm_sentences/audio/intermediate/eaglyRed4.opus", degradation_level: 2, format: 0 },
+    { stimulus: "crm_sentences/audio/intermediate/eaglyRed5.opus", degradation_level: 2, format: 0 },
+    
+    { stimulus: "crm_sentences/audio/good/baronRed1.opus", degradation_level: 1, format: 0 },
+    { stimulus: "crm_sentences/audio/good/baronRed1.opus", degradation_level: 1, format: 1 },
+    { stimulus: "crm_sentences/audio/good/baronRed1.opus", degradation_level: 1, format: 1 },
+    { stimulus: "crm_sentences/audio/good/baronRed4.opus", degradation_level: 1, format: 0 },
+    { stimulus: "crm_sentences/audio/good/baronRed5.opus", degradation_level: 1, format: 0 },
+    { stimulus: "crm_sentences/audio/good/charlieRed1.opus", degradation_level: 1, format: 0 },
+    { stimulus: "crm_sentences/audio/good/charlieRed1.opus", degradation_level: 1, format: 0 },
+    { stimulus: "crm_sentences/audio/good/charlieRed1.opus", degradation_level: 1, format: 0 },
+    { stimulus: "crm_sentences/audio/good/charlieRed4.opus", degradation_level: 1, format: 0 },
+    { stimulus: "crm_sentences/audio/good/charlieRed5.opus", degradation_level: 1, format: 0 },
+    { stimulus: "crm_sentences/audio/good/tigerRed1.opus", degradation_level: 1, format: 0 },
+    { stimulus: "crm_sentences/audio/good/tigerRed1.opus", degradation_level: 1, format: 0 },
+    { stimulus: "crm_sentences/audio/good/tigerRed1.opus", degradation_level: 1, format: 0 },
+    { stimulus: "crm_sentences/audio/good/tigerRed4.opus", degradation_level: 1, format: 0 },
+    { stimulus: "crm_sentences/audio/good/tigerRed5.opus", degradation_level: 1, format: 0 },
+    { stimulus: "crm_sentences/audio/good/eaglyRed1.opus", degradation_level: 1, format: 0 },
+    { stimulus: "crm_sentences/audio/good/eaglyRed1.opus", degradation_level: 1, format: 0 },
+    { stimulus: "crm_sentences/audio/good/eaglyRed1.opus", degradation_level: 1, format: 0 },
+    { stimulus: "crm_sentences/audio/good/eaglyRed4.opus", degradation_level: 1, format: 0 },
+    { stimulus: "crm_sentences/audio/good/eaglyRed5.opus", degradation_level: 1, format: 0 },
+    
+    { stimulus: "crm_sentences/audio/full/baronRed0.m4a", degradation_level: 0, format: 0 },
+    { stimulus: "crm_sentences/audio/full/baronRed0.m4a", degradation_level: 0, format: 0 },
+    { stimulus: "crm_sentences/audio/full/baronRed0.m4a", degradation_level: 0, format: 0 },
+    { stimulus: "crm_sentences/audio/full/baronRed4.m4a", degradation_level: 0, format: 0 },
+    { stimulus: "crm_sentences/audio/full/baronRed5.m4a", degradation_level: 0, format: 0 },
+    { stimulus: "crm_sentences/audio/full/charlieRed0.m4a", degradation_level: 0, format: 0 },
+    { stimulus: "crm_sentences/audio/full/charlieRed0.m4a", degradation_level: 0, format: 0 },
+    { stimulus: "crm_sentences/audio/full/charlieRed0.m4a", degradation_level: 0, format: 0 },
+    { stimulus: "crm_sentences/audio/full/charlieRed4.m4a", degradation_level: 0, format: 0 },
+    { stimulus: "crm_sentences/audio/full/charlieRed5.m4a", degradation_level: 0, format: 0 },
+    { stimulus: "crm_sentences/audio/full/tigerRed0.m4a", degradation_level: 0, format: 0 },
+    { stimulus: "crm_sentences/audio/full/tigerRed0.m4a", degradation_level: 0, format: 0 },
+    { stimulus: "crm_sentences/audio/full/tigerRed0.m4a", degradation_level: 0, format: 0 },
+    { stimulus: "crm_sentences/audio/full/tigerRed4.m4a", degradation_level: 0, format: 0 },
+    { stimulus: "crm_sentences/audio/full/tigerRed5.m4a", degradation_level: 0, format: 0 },
+    { stimulus: "crm_sentences/audio/full/eaglyRed0.m4a", degradation_level: 0, format: 0 },
+    { stimulus: "crm_sentences/audio/full/eaglyRed0.m4a", degradation_level: 0, format: 0 },
+    { stimulus: "crm_sentences/audio/full/eaglyRed0.m4a", degradation_level: 0, format: 0 },
+    { stimulus: "crm_sentences/audio/full/eaglyRed4.m4a", degradation_level: 0, format: 0 },
+    { stimulus: "crm_sentences/audio/full/eaglyRed5.m4a", degradation_level: 0, format: 0 },
+
+
+
   ];
 
   /* attempt to add a variable with degraded quality */
