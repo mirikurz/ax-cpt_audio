@@ -10,7 +10,7 @@
   <script src="jspsych-6.3.1/plugins/jspsych-preload.js"></script>
   <script src="jspsych-6.3.1/plugins/jspsych-survey-html-form.js"></script>
   <script src="jspsych-6.3.1/plugins/jspsych-survey-multi-choice.js"></script>
-    
+
   <link href="jspsych-6.3.1/css/jspsych.css" rel="stylesheet" type="text/css">
 </head>
 
@@ -38,9 +38,9 @@
     choices: ["Continue"]
   }
   timeline.push(instructions_2);
-  
+
   var instructions_2_1 = {
-    type: 'html-button-response', 
+    type: 'html-button-response',
     stimulus: '<div style="width: 800px;">' +
       '<p> Before we begin with the actual task, we ask you to let us know about your age and gender. </p>' +
       '</div>',
@@ -49,15 +49,15 @@
   timeline.push(instructions_2_1);
 
   /* Demograpics */
- // move id closer to the start so we can give participants an id? 
-  
+ // move id closer to the start so we can give participants an id?
+
 var id = {
   type: 'survey-html-form',
   preamble: '<p> ID </p>',
   html: '<input type = "text"/>'
 }
   timeline.push(id);
-  
+
 var age = {
   type: 'survey-html-form',
   preamble: '<p> Please indicate your age. </p>',
@@ -74,7 +74,7 @@ var gender = {
     ],
   }
   timeline.push(gender);
-    
+
   var instructions_3 = {
     type: 'html-button-response',
     stimulus: '<div style="width: 800px;">' +
@@ -91,13 +91,13 @@ var gender = {
 
   var preload = {
     type: 'preload',
-    audio: ['crm_sentences/audio/bad/baronRed4.opus', 'crm_sentences/audio/bad/baronRed1.opus', 'crm_sentences/audio/bad/baronRed2.opus', 'crm_sentences/audio/bad/baronRed3.opus', 
+    audio: ['crm_sentences/audio/bad/baronRed4.opus', 'crm_sentences/audio/bad/baronRed1.opus', 'crm_sentences/audio/bad/baronRed2.opus', 'crm_sentences/audio/bad/baronRed3.opus',
             'crm_sentences/audio/bad/charlieRed4.opus', 'crm_sentences/audio/bad/charlieRed1.opus', 'crm_sentences/audio/bad/charlieRed2.opus', 'crm_sentences/audio/bad/charlieRed3.opus',
            'crm_sentences/audio/bad/tigerRed1.opus', 'crm_sentences/audio/bad/tigerRed2.opus', 'crm_sentences/audio/bad/tigerRed3.opus', 'crm_sentences/audio/bad/tigerRed4.opus',
            'crm_sentences/audio/bad/eagleRed1.opus', 'crm_sentences/audio/bad/eagleRed2.opus', 'crm_sentences/audio/bad/eagleRed3.opus', 'crm_sentences/audio/bad/eagleRed4.opus'],
-            
-          
-    
+
+
+
     on_success: function (file) {
       console.log('File loaded: ', file);
     },
@@ -124,10 +124,10 @@ var gender = {
     { stimulus: "crm_sentences/audio/bad/tigerRed2.opus", degradation_level: 3, format: 0 },
     { stimulus: "crm_sentences/audio/bad/tigerRed3.opus", degradation_level: 3, format: 0 },
     { stimulus: "crm_sentences/audio/bad/tigerRed4.opus", degradation_level: 3, format: 0 },
-    { stimulus: "crm_sentences/audio/bad/eaglyRed1.opus", degradation_level: 3, format: 0 },
-    { stimulus: "crm_sentences/audio/bad/eaglyRed2.opus", degradation_level: 3, format: 0 },
-    { stimulus: "crm_sentences/audio/bad/eaglyRed3.opus", degradation_level: 3, format: 0 },
-    { stimulus: "crm_sentences/audio/bad/eaglyRed4.opus", degradation_level: 3, format: 0 },
+    { stimulus: "crm_sentences/audio/bad/eagleRed1.opus", degradation_level: 3, format: 0 },
+    { stimulus: "crm_sentences/audio/bad/eagleRed2.opus", degradation_level: 3, format: 0 },
+    { stimulus: "crm_sentences/audio/bad/eagleRed3.opus", degradation_level: 3, format: 0 },
+    { stimulus: "crm_sentences/audio/bad/eagleRed4.opus", degradation_level: 3, format: 0 },
 
   ];
 
@@ -160,7 +160,7 @@ var gender = {
     prompt: "<p>Does the audio match the target?</p>",
     data: {
       task: 'response',
-      degradation_level: jsPsych.timelineVariable('degradation_level'), 
+      degradation_level: jsPsych.timelineVariable('degradation_level'),
       format: jsPsych.timelineVariable('format')
     }
   };
@@ -175,7 +175,7 @@ var gender = {
   timeline.push(test_procedure)
 
   var end_experiment = {
-    type: 'html-button-response', 
+    type: 'html-button-response',
     stimulus: '<div style="width: 800px;">' +
       '<p> The experiment is over. Thank you for your participation! :) </p>' +
       '</div>',
