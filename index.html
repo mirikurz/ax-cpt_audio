@@ -35,7 +35,43 @@
     choices: ["Continue"]
   }
   timeline.push(instructions_2);
+  
+  var instructions_2_1 = {
+    type: 'html-button-response', 
+    stimulus: '<div style="width: 800px;">' +
+      '<p> Before we begin with the actual task, we ask you to let us know about your age and gender. </p>' +
+      '</div>',
+    choices: ["Continue"]
+  }
+  timeline.push(instructions_2_1);
 
+  /* Demograpics */
+ // move id closer to the start so we can give participants an id? 
+  
+var id = {
+  type: 'survey-html-form',
+  preamble: '<p> ID </p>',
+  html: '<input type = "text"/>'
+}
+  timeline.push(id);
+  
+var age = {
+  type: 'survey-html-form',
+  preamble: '<p> Please indicate your age. </p>',
+  html: '<input type = "text"/>'
+}
+timeline.push(age);
+
+var gender_options = ["Female", "Male", "Diverse", "Prefer not to say"];
+
+var gender = {
+    type: 'survey-multi-choice',
+    questions: [
+      {prompt: '<p> Which gender do you identify with? </p>', options: gender_options, required: true}
+    ],
+  }
+  timeline.push(gender);
+    
   var instructions_3 = {
     type: 'html-button-response',
     stimulus: '<div style="width: 800px;">' +
@@ -46,7 +82,6 @@
     post_trial_gap: 1000
   }
   timeline.push(instructions_3);
-
 
 
   //var timeline = [];
@@ -137,7 +172,14 @@
   }
   timeline.push(test_procedure)
 
-
+  var end_experiment = {
+    type: 'html-button-response', 
+    stimulus: '<div style="width: 800px;">' +
+      '<p> The experiment is over. Thank you for your participation! :) </p>' +
+      '</div>',
+    choices: ["End"]
+  }
+  timeline.push(instructions_2_1);
   /* start the experiment */
   jsPsych.init({
     timeline: timeline,
