@@ -10,6 +10,7 @@
   <script src="jspsych-6.3.1/plugins/jspsych-preload.js"></script>
   <script src="jspsych-6.3.1/plugins/jspsych-survey-html-form.js"></script>
   <script src="jspsych-6.3.1/plugins/jspsych-survey-multi-choice.js"></script>
+  <script src="jspsych-6.3.1/plugins/psych-audio-keyboard-response.js"></script>
 
   <link href="jspsych-6.3.1/css/jspsych.css" rel="stylesheet" type="text/css">
 </head>
@@ -154,9 +155,9 @@ var gender = {
   }
 
   var test = {
-    type: 'audio-button-response',
+    type: 'psych-audio-keyboard-response',
     stimulus: jsPsych.timelineVariable('stimulus'),
-    choices: ['Match', 'Mismatch'],
+    choices: ['m', 'q'],
     prompt: "<p>Does the audio match the target?</p>",
     data: {
       task: 'response',
