@@ -11,6 +11,7 @@
   <script src="jspsych-6.3.1/plugins/jspsych-survey-html-form.js"></script>
   <script src="jspsych-6.3.1/plugins/jspsych-survey-multi-choice.js"></script>
   <script src="jspsych-6.3.1/plugins/jspsych-audio-keyboard-response.js"></script>
+  <script src="jspsych-6.3.1/plugins/jspsych-instructions.js"></script>
 
   <link href="jspsych-6.3.1/css/jspsych.css" rel="stylesheet" type="text/css">
 </head>
@@ -40,14 +41,14 @@
   }
   timeline.push(instructions_2);
 
-  var instructions_2_1 = {
+  var instructions_before = {
     type: 'html-button-response',
     stimulus: '<div style="width: 800px;">' +
       '<p> Before we begin with the actual task, we ask you to let us know about your age and gender. </p>' +
       '</div>',
     choices: ["Continue"]
   }
-  timeline.push(instructions_2_1);
+  timeline.push(instructions_before);
 
   /* Demograpics */
  // move id closer to the start so we can give participants an id?
@@ -80,7 +81,7 @@ var gender = {
     type: 'html-button-response',
     stimulus: '<div style="width: 800px;">' +
       '<p>The audio will start playing on the next screen.</p>' +
-      '<p>Remember: press "Match" if the audio is "XYZ" .</p>' +
+      '<p>Remember: press "M" if the audio is "XYZ", "Q" if it is any other audio .</p>' +
       '</div>',
     choices: ["I'm ready to start!"],
     post_trial_gap: 1000
@@ -146,9 +147,7 @@ var gender = {
     type: 'html-keyboard-response',
     stimulus: '<div style="font-size:60px;">+</div>',
     choices: jsPsych.NO_KEYS,
-    trial_duration: function () {
-      return jsPsych.randomization.sampleWithoutReplacement([250, 500, 750, 1000, 1250, 1500, 1750, 2000], 1)[0];
-    },
+    trial_duration: 1000,
     data: {
       task: 'fixation'
     }
@@ -175,14 +174,14 @@ var gender = {
   }
   timeline.push(test_procedure)
 
-  var end_experiment = {
+  var goodbye = {
     type: 'html-button-response',
     stimulus: '<div style="width: 800px;">' +
       '<p> The experiment is over. Thank you for your participation! :) </p>' +
       '</div>',
     choices: ["End"]
   }
-  timeline.push(instructions_2_1);
+  timeline.push(goodbye);
   /* start the experiment */
   jsPsych.init({
     timeline: timeline,
