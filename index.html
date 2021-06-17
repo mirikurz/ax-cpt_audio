@@ -153,9 +153,17 @@ var gender = {
     }
   }
 
+  var myArray = ['crm_sentences/audio/bad/baronRed4.opus', 'crm_sentences/audio/bad/baronRed1.opus', 'crm_sentences/audio/bad/baronRed2.opus', 'crm_sentences/audio/bad/baronRed3.opus',
+            'crm_sentences/audio/bad/charlieRed4.opus', 'crm_sentences/audio/bad/charlieRed1.opus', 'crm_sentences/audio/bad/charlieRed2.opus', 'crm_sentences/audio/bad/charlieRed3.opus',
+           'crm_sentences/audio/bad/tigerRed1.opus', 'crm_sentences/audio/bad/tigerRed2.opus', 'crm_sentences/audio/bad/tigerRed3.opus', 'crm_sentences/audio/bad/tigerRed4.opus',
+           'crm_sentences/audio/bad/eagleRed1.opus', 'crm_sentences/audio/bad/eagleRed2.opus', 'crm_sentences/audio/bad/eagleRed3.opus', 'crm_sentences/audio/bad/eagleRed4.opus'];
+ 
+  var sample = jsPsych.randomization.sampleWithReplacement(myArray, 50, [12, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1]);
+
+  
   var test = {
     type: 'audio-keyboard-response',
-    stimulus: jsPsych.timelineVariable('stimulus'),
+    stimulus: jsPsych.timelineVariable('sample'),
     choices: ['m', 'q'],
     prompt: "<p>Does the audio match the target?</p>",
     data: {
