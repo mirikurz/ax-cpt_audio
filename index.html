@@ -167,12 +167,7 @@ var gender = {
     stimulus: jsPsych.timelineVariable('stimulus'),
     choices: ['m', 'q'],
     prompt: "<p>Does the audio match the target?</p>",
-    sample: {
-      type: 'with-replacement',
-      size: 23, 
-      weights: [12, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1],
-    }
-    data: {
+   data: {
       task: 'response',
       degradation_level: jsPsych.timelineVariable('degradation_level'),
       format: jsPsych.timelineVariable('format')
