@@ -195,6 +195,7 @@ var gender = {
   /* start the experiment */
   jsPsych.init({
     timeline: timeline,
+    show_progress_bar: true,
     on_finish: function () {
       jsPsych.data.displayData();
     }
