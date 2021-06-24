@@ -35,7 +35,7 @@
   var instructions_2 = {
     type: 'html-button-response',
     stimulus: '<div style="width: 800px;">' +
-      '<p>You will hear different audio files which all have the same structure: X bla Y bla Z. When you hear "XYZ", that is your target and you are asked to click on "M" on your keyboard. For every other stimulus, you click on "Q" on your keyboard. </p>' +
+      '<p>You will hear different audio files which all have the same structure: Ready X go to red Y now. When you hear "Ready Baron go to red one now", that is your target and you are asked to click on "M" on your keyboard. For every other stimulus, you click on "Q" on your keyboard. </p>' +
       '</div>',
     choices: ["Continue"]
   }
@@ -81,7 +81,7 @@ var gender = {
     type: 'html-button-response',
     stimulus: '<div style="width: 800px;">' +
       '<p>The audio will start playing on the next screen.</p>' +
-      '<p>Remember: press "M" if the audio is "XYZ", "Q" if it is any other audio .</p>' +
+      '<p>Remember: press "M" if the audio is "Ready Baron go to red one now", "Q" if it is any other audio .</p>' +
       '</div>',
     choices: ["I'm ready to start!"],
     post_trial_gap: 1000
@@ -93,7 +93,7 @@ var gender = {
 
   var preload = {
     type: 'preload',
-    audio: ['crm_sentences/audio/bad/baronRed4.opus', 'crm_sentences/audio/bad/baronRed1.opus', 'crm_sentences/audio/bad/baronRed2.opus', 'crm_sentences/audio/bad/baronRed3.opus',
+    audio: ['crm_sentences/audio/bad/baronRed1.opus', 'crm_sentences/audio/bad/baronRed4.opus', 'crm_sentences/audio/bad/baronRed2.opus', 'crm_sentences/audio/bad/baronRed3.opus',
             'crm_sentences/audio/bad/charlieRed4.opus', 'crm_sentences/audio/bad/charlieRed1.opus', 'crm_sentences/audio/bad/charlieRed2.opus', 'crm_sentences/audio/bad/charlieRed3.opus',
            'crm_sentences/audio/bad/tigerRed1.opus', 'crm_sentences/audio/bad/tigerRed2.opus', 'crm_sentences/audio/bad/tigerRed3.opus', 'crm_sentences/audio/bad/tigerRed4.opus',
            'crm_sentences/audio/bad/eagleRed1.opus', 'crm_sentences/audio/bad/eagleRed2.opus', 'crm_sentences/audio/bad/eagleRed3.opus', 'crm_sentences/audio/bad/eagleRed4.opus'],
