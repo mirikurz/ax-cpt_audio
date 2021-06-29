@@ -160,7 +160,7 @@ var gender = {
            'crm_sentences/audio/bad/eagleRed1.opus', 'crm_sentences/audio/bad/eagleRed2.opus', 'crm_sentences/audio/bad/eagleRed3.opus', 'crm_sentences/audio/bad/eagleRed4.opus'];
 */
   
-  /* 29 06 21 */
+  /* 29 06 21 
   var axcpt = {
     timeline_variables: [
       {stimulus: 'crm_sentences/audio/bad/baronRed1.opus', degradation_level: 3, format: 0 }, 
@@ -182,14 +182,15 @@ var gender = {
       ],
     sample: {
       type: 'with replacement',
-      size: 48, // 80 trials with replacement 
+      size: 48, // 40 trials with replacement 
       weights: [16, 2, 1, 1, 2, 1, 1, 2, 2, 2, 2, 1, 2, 2, 2, 1]
     }
   }
+  */
   
-  /* var sample = jsPsych.randomization.sampleWithReplacement(test_stimuli, 23, [12, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1]); */
+   var sample = jsPsych.randomization.sampleWithReplacement(test_stimuli, 40, [16, 2, 1, 1, 2, 1, 1, 2, 2, 2, 2, 1, 2, 2, 2, 1]); 
 
-  /* console.log(sample) */
+   console.log(sample) 
 
     var test = {
     type: 'audio-keyboard-response',
@@ -206,7 +207,7 @@ var gender = {
 
   var test_procedure = {
     timeline: [fixation, test],
-    timeline_variables: axcpt,
+    timeline_variables: sample,
     repetitions: 1,
     randomize_order: true
   }
