@@ -159,7 +159,35 @@ var gender = {
            'crm_sentences/audio/bad/tigerRed1.opus', 'crm_sentences/audio/bad/tigerRed2.opus', 'crm_sentences/audio/bad/tigerRed3.opus', 'crm_sentences/audio/bad/tigerRed4.opus',
            'crm_sentences/audio/bad/eagleRed1.opus', 'crm_sentences/audio/bad/eagleRed2.opus', 'crm_sentences/audio/bad/eagleRed3.opus', 'crm_sentences/audio/bad/eagleRed4.opus'];
 */
-  var sample = jsPsych.randomization.sampleWithReplacement(test_stimuli, 23, [12, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1]);
+  
+  /* 29 06 21 */
+  var axcpt = {
+    timeline_variables: [
+      {audio: 'crm_sentences/audio/bad/baronRed1.opus', degradation_level: 3, format: 0 }, 
+      {audio: 'crm_sentences/audio/bad/baronRed2.opus', degradation_level: 3, format: 1 },
+      {audio: 'crm_sentences/audio/bad/baronRed3.opus', degradation_level: 3, format: 1 },
+    { audio: 'crm_sentences/audio/bad/baronRed4.opus', degradation_level: 3, format: 1 },
+   { audio: 'crm_sentences/audio/bad/charlieRed1.opus', degradation_level: 3, format: 2 },
+    { audio: 'crm_sentences/audio/bad/charlieRed2.opus', degradation_level: 3, format: 3 },
+    { audio: 'crm_sentences/audio/bad/charlieRed3.opus', degradation_level: 3, format: 3 },
+    { audio: 'crm_sentences/audio/bad/charlieRed4.opus', degradation_level: 3, format: 3 },
+    { audio: 'crm_sentences/audio/bad/tigerRed1.opus', degradation_level: 3, format: 2 },
+    { audio: 'crm_sentences/audio/bad/tigerRed2.opus', degradation_level: 3, format: 3 },
+    { audio: 'crm_sentences/audio/bad/tigerRed3.opus', degradation_level: 3, format: 3 },
+    { audio: 'crm_sentences/audio/bad/tigerRed4.opus', degradation_level: 3, format: 3 },
+    { audio: 'crm_sentences/audio/bad/eagleRed1.opus', degradation_level: 3, format: 2 },
+    { audio: 'crm_sentences/audio/bad/eagleRed2.opus', degradation_level: 3, format: 3 },
+    { audio: 'crm_sentences/audio/bad/eagleRed3.opus', degradation_level: 3, format: 3 },
+    { audio: 'crm_sentences/audio/bad/eagleRed4.opus', degradation_level: 3, format: 3 }
+      ],
+    sample: {
+      type: 'with replacement',
+      size: 80, // 80 trials with replacement 
+      weights: [16, 3, 3, 2, 3, 3, 2, 2, 2, 2, 2, 1, 2, 2, 2, 1]
+    }
+  }
+  
+  /* var sample = jsPsych.randomization.sampleWithReplacement(test_stimuli, 23, [12, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1]); */
 
   console.log(sample)
 
@@ -178,8 +206,8 @@ var gender = {
 
   var test_procedure = {
     timeline: [fixation, test],
-    timeline_variables: sample,
-    repetitions: 5,
+    timeline_variables: axcpt,
+    repetitions: 1,
     randomize_order: true
   }
   timeline.push(test_procedure)
