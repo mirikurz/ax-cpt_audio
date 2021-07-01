@@ -56,14 +56,16 @@
 var id = {
   type: 'survey-html-form',
   preamble: '<p> ID </p>',
-  html: '<input type = "text"/>'
+  html: '<input type = "text"/>', 
+  data: { type: 'id' }
 }
   timeline.push(id);
 
 var age = {
   type: 'survey-html-form',
   preamble: '<p> Please indicate your age. </p>',
-  html: '<input type = "text"/>'
+  html: '<input type = "text"/>',
+  data: { type: 'age' }
 }
 timeline.push(age);
 
@@ -71,6 +73,7 @@ var gender_options = ["Female", "Male", "Diverse", "Prefer not to say"];
 
 var gender = {
     type: 'survey-multi-choice',
+  data: { type: 'gender' },
     questions: [
       {prompt: '<p> Which gender do you identify with? </p>', options: gender_options, required: true}
     ],
