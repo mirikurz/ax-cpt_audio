@@ -230,6 +230,9 @@ var gender = {
     }
   };
 
+  
+  /* reaction time ???? */
+  var data = jsPsych.data.get().filter({trial_type: 'audio-keyboard-response'}).filterCustom(function(x){ return x.rt > 0; });
 
   var test_procedure = {
     timeline: [fixation, test],
