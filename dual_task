@@ -1,0 +1,141 @@
+// WARUM FUNKTIONIERT DAS NICHT MAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAN
+// FRUSTRATION: VERY HIGH 
+
+var timeline = [];
+
+var letters = ['A', 'B', 'C', 'D', 'E', 'F'];
+var numbers = ['1', '2', '3', '4', '5', '6', '7', '8', '9'];
+
+
+var myarray = [letters, numbers];
+var shuffledArray = jsPsych.randomization.sampleWithReplacement(myarray[10,2]);
+
+  // keep instructions 1?
+  var instructions_1 = {
+    type: 'html-button-response',
+    stimulus: '<div style="width: 800px;">' +
+      '<p>This experiment will test your ability to hold information in short-term, temporary memory. This is called working memory.</p>' +
+      '</div>',
+    choices: ["Continue"]
+  }
+timeline.push(instructions_1);
+
+// AUDIO TASK 
+// Preload 
+
+  var preload = {
+    type: 'preload',
+    audio: ['crm_sentences/audio/babble/baronRed1.m4a', 'crm_sentences/audio/babble/baronRed4.m4a', 'crm_sentences/audio/babble/baronRed2.m4a', 'crm_sentences/audio/babble/baronRed3.m4a',
+            'crm_sentences/audio/babble/charlieRed4.m4a', 'crm_sentences/audio/babble/charlieRed1.m4a', 'crm_sentences/audio/babble/charlieRed2.m4a', 'crm_sentences/audio/babble/charlieRed3.m4a',
+           'crm_sentences/audio/babble/tigerRed1.m4a', 'crm_sentences/audio/babble/tigerRed2.m4a', 'crm_sentences/audio/babble/tigerRed3.m4a', 'crm_sentences/audio/babble/tigerRed4.m4a',
+           'crm_sentences/audio/babble/eagleRed1.m4a', 'crm_sentences/audio/babble/eagleRed2.m4a', 'crm_sentences/audio/babble/eagleRed3.m4a', 'crm_sentences/audio/babble/eagleRed4.m4a'],
+  
+timeline.push(preload);
+
+// variable 
+  /* Test Trials */
+  // degradation_level: 0 = full, 1 = good, 2 = intermediate, 3 = bad; format: 0 = AX, 1 = AY, 2 = BX, 3 = BY
+  var test_stimuli = [
+    { stimulus: "crm_sentences/audio/babble/baronRed1.m4a", degradation_level: 3, format: 0 },
+    { stimulus: "crm_sentences/audio/babble/baronRed1.m4a", degradation_level: 3, format: 0 },
+    { stimulus: "crm_sentences/audio/babble/baronRed1.m4a", degradation_level: 3, format: 0 },
+    { stimulus: "crm_sentences/audio/babble/baronRed1.m4a", degradation_level: 3, format: 0 },
+    { stimulus: "crm_sentences/audio/babble/baronRed1.m4a", degradation_level: 3, format: 0 },
+    { stimulus: "crm_sentences/audio/babble/baronRed1.m4a", degradation_level: 3, format: 0 },
+    { stimulus: "crm_sentences/audio/babble/baronRed1.m4a", degradation_level: 3, format: 0 },
+    { stimulus: "crm_sentences/audio/babble/baronRed1.m4a", degradation_level: 3, format: 0 },
+    { stimulus: "crm_sentences/audio/babble/baronRed1.m4a", degradation_level: 3, format: 0 },
+    { stimulus: "crm_sentences/audio/babble/baronRed1.m4a", degradation_level: 3, format: 0 },
+    { stimulus: "crm_sentences/audio/babble/baronRed1.m4a", degradation_level: 3, format: 0 },
+    { stimulus: "crm_sentences/audio/babble/baronRed1.m4a", degradation_level: 3, format: 0 },
+    { stimulus: "crm_sentences/audio/babble/baronRed1.m4a", degradation_level: 3, format: 0 },
+    { stimulus: "crm_sentences/audio/babble/baronRed1.m4a", degradation_level: 3, format: 0 },
+    { stimulus: "crm_sentences/audio/babble/baronRed1.m4a", degradation_level: 3, format: 0 },
+    { stimulus: "crm_sentences/audio/babble/baronRed1.m4a", degradation_level: 3, format: 0 }, // 16 times AX 
+    { stimulus: "crm_sentences/audio/babble/baronRed2.m4a", degradation_level: 3, format: 1 },
+    { stimulus: "crm_sentences/audio/babble/baronRed3.m4a", degradation_level: 3, format: 1 },
+    { stimulus: "crm_sentences/audio/babble/baronRed3.m4a", degradation_level: 3, format: 1 },
+    { stimulus: "crm_sentences/audio/babble/baronRed4.m4a", degradation_level: 3, format: 1 }, // 4 times AY 
+    { stimulus: "crm_sentences/audio/babble/charlieRed1.m4a", degradation_level: 3, format: 2 },
+    { stimulus: "crm_sentences/audio/babble/tigerRed1.m4a", degradation_level: 3, format: 2 },
+    { stimulus: "crm_sentences/audio/babble/eagleRed1.m4a", degradation_level: 3, format: 2 },     
+    { stimulus: "crm_sentences/audio/babble/eagleRed1.m4a", degradation_level: 3, format: 2 }, // 4 times BX
+    { stimulus: "crm_sentences/audio/babble/charlieRed2.m4a", degradation_level: 3, format: 3 },
+    { stimulus: "crm_sentences/audio/babble/charlieRed2.m4a", degradation_level: 3, format: 3 },
+    { stimulus: "crm_sentences/audio/babble/charlieRed3.m4a", degradation_level: 3, format: 3 },
+    { stimulus: "crm_sentences/audio/babble/charlieRed3.m4a", degradation_level: 3, format: 3 },
+    { stimulus: "crm_sentences/audio/babble/charlieRed4.m4a", degradation_level: 3, format: 3 },
+    { stimulus: "crm_sentences/audio/babble/charlieRed4.m4a", degradation_level: 3, format: 3 },
+    { stimulus: "crm_sentences/audio/babble/tigerRed2.m4a", degradation_level: 3, format: 3 },
+    { stimulus: "crm_sentences/audio/babble/tigerRed2.m4a", degradation_level: 3, format: 3 },
+    { stimulus: "crm_sentences/audio/babble/tigerRed3.m4a", degradation_level: 3, format: 3 },
+    { stimulus: "crm_sentences/audio/babble/tigerRed4.m4a", degradation_level: 3, format: 3 },
+    { stimulus: "crm_sentences/audio/babble/tigerRed4.m4a", degradation_level: 3, format: 3 },
+    { stimulus: "crm_sentences/audio/babble/eagleRed2.m4a", degradation_level: 3, format: 3 },
+    { stimulus: "crm_sentences/audio/babble/eagleRed2.m4a", degradation_level: 3, format: 3 },
+    { stimulus: "crm_sentences/audio/babble/eagleRed3.m4a", degradation_level: 3, format: 3 },
+    { stimulus: "crm_sentences/audio/babble/eagleRed3.m4a", degradation_level: 3, format: 3 },
+    { stimulus: "crm_sentences/audio/babble/eagleRed4.m4a", degradation_level: 3, format: 3 } // 16 times BX 
+
+  ];
+
+    var test = {
+    type: 'audio-keyboard-response',
+    stimulus: jsPsych.timelineVariable('stimulus'),
+    choices: ['m', 'q'],
+    prompt: "<p>Does the audio match the target?</p>",
+    show_start_time: 500, 
+   data: {
+      task: 'response',
+      degradation_level: jsPsych.timelineVariable('degradation_level'),
+      format: jsPsych.timelineVariable('format')
+    }
+  };
+  
+timeline.push(test)
+  
+ // RSVP TASK 
+var rsvp_trial = {
+  type: 'html-keyboard-response', 
+  stimuli: [letters, numbers],
+  choices: ['2', '3', '4', '5', '6', '7', '8', '9'],
+  repetitions: 1, 
+  randomize_order: true, 
+  trial_duration: 5000, 
+  show_start_time: 400,
+  data: {
+    task: 'rsvp_trial'
+  }
+}
+
+timeline.push(rsvp_trial)
+
+// TEST PROCEDURE
+  var test_procedure = {
+    type: 'psychophysics',
+    timeline: [rsvp_trial, test],
+    timeline_variables: sample,
+    repetitions: 1,
+    randomize_order: true
+  }
+timeline.push(test_procedure)
+
+
+  var goodbye = {
+    type: 'html-button-response',
+    stimulus: '<div style="width: 800px;">' +
+      '<p> The experiment is over. Thank you for your participation! :) </p>' +
+      '</div>',
+    choices: ["End"]
+  }
+timeline.push(goodbye);
+  
+  /* start the experiment */
+  jsPsych.init({
+    timeline: timeline,
+    show_progress_bar: true,
+    on_finish: function () {
+      jsPsych.data.displayData();
+      jsPsych.data.get().localSave('csv','mydata.csv');
+    }
+  });
