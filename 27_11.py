@@ -5,11 +5,10 @@ import pyaudio
 import datetime
 import pandas as pd
 import numpy as np
-import keyboard
+import keyboard as kb
 #import simpleaudio
 import msvcrt
 import wave
-import time
 import glob
 from psychopy import core
 import multiprocessing
@@ -22,18 +21,7 @@ from multiprocessing import Process
 from playsound import playsound
 from timeit import default_timer as timer
 from datetime import timedelta, datetime
-
-# for reaction time ##############################################################
-
-def impressed(): # m pressed
-    time_of_m_pressed = timer()
-    print("m pressed")
-    return time_of_m_pressed, "m"
-
-def unimpressed(): # q pressed
-    time_of_q_pressed = timer()
-    print("q pressed")
-    return time_of_q_pressed, "q"
+from pynput import keyboard
 
 # demographics #######################################################################
 
@@ -53,14 +41,12 @@ numbers = ['2', '3', '4', '5', '6', '7', '8', '9']
 
 # empty lists to load answers into
 chosen_audio_files = []
-keyboard_responses = []
+self_keys = []
 rsvp_list = []
 rsvp_response = []
-#reaction_time = []
-
-# define hot keys
-keyboard.add_hotkey("m", lambda: impressed())
-keyboard.add_hotkey("q", lambda: unimpressed())
+reaction_time = []
+audio_started = False
+key_pressed = False
 
 for i in range(2): # set number of trials here
 
@@ -81,37 +67,60 @@ for i in range(2): # set number of trials here
     rsvp_list.append(chosen_numbers)
 
     # threading ##########################################################
-    start = timer()
 
-    def audio_ax_cpt():
+    def audio_ax_cpt(): # audio
         play(audio_ax)
 
-    ax_response: str = ""
+    def on_press(key): # keyboard response to audio
+        if key == keyboard.Key.esc:
+            return False
+        try:
+            k = key.char
+        except:
+            k = key.name
+        if k in ['m', 'q']:  # keys of interest
+            self_keys.append(k)
+            print('Key pressed:' + k)
+            return False
 
-    def keyboard():
-        #print("Does the audio match the target?")
-        global ax_response
-        ax_response = str(input("Does the audio match the target?"))
-        return(ax_response)
-    print(ax_response)
-    keyboard_responses.append(ax_response)
-
-    def rsvp():
+    def rsvp(): # visual task
         for x in joinedlist:
             print(x)
             time.sleep(0.083) # seconds in between the letters
 
     audio_thread = threading.Thread(name='audio_ax_cpt', target=audio_ax_cpt) # thread for audio
-    keyboard_thread = threading.Thread(target=keyboard, args=()) # thread for audio-keyboard-response
+    listener = keyboard.Listener(on_press=on_press) #  thread for audio-keyboard-response
     rsvp_thread = threading.Thread(name='rsvp', target=rsvp) # thread for visual rsvp
 
     audio_thread.start()
-    keyboard_thread.start()
+    audio_started = True
+    listener.start()
+    if kb.is_pressed('q') or kb.is_pressed('m'):
+        key_pressed = True
     rsvp_thread.start()
 
+    # reaction time ######################################################################################
+
+    start_time = 0
+    key_time = 0
+
+    if audio_started == True:
+        start_time = time.time()
+        audio_started = False
+
+    if key_pressed == True:
+        key_time = time.time()
+        key_pressed = False
+
+    r_t = key_time - start_time
+    reaction_time.append(r_t)
+
+    # finish threads ####################################################################################
     audio_thread.join()
-    keyboard_thread.join()
+    listener.join
     rsvp_thread.join()
+
+
 
     # ask for rsvp input after threading finished ####################################################################
     rsvp_keyboard_response = str(input("Which numbers were there?"))
@@ -125,19 +134,17 @@ save_file = output_path + save_name
 
 trial_1_audio = chosen_audio_files[0]
 trial_2_audio = chosen_audio_files[1]
-trial_1_keyboard = keyboard_responses[0]
-trial_2_keyboard = keyboard_responses[1]
+trial_1_keyboard = self_keys[0]
+trial_2_keyboard = self_keys[1]
 trial_1_rsvp_list = rsvp_list[0]
 trial_2_rsvp_list = rsvp_list[1]
 trial_1_rsvp_response = rsvp_response[0]
-print(trial_1_keyboard)
 trial_2_rsvp_response = rsvp_response[1]
-#trial_1_reaction_time = time_impressed[0]
-#trial_2_reaction_time = time_impressed[1]
+trial_1_reaction_time = reaction_time[0]
+trial_2_reaction_time = reaction_time[1]
 
 output_file = pd.DataFrame({'Subject_ID' : [subject_ID],
                             'Subject_Age' : [subject_Age],
-                           # 'Date': [curr_date],
                             'Response1': [trial_1_keyboard],
                             'Response2': [trial_2_keyboard],
                             'Audio1': [trial_1_audio],
@@ -145,9 +152,9 @@ output_file = pd.DataFrame({'Subject_ID' : [subject_ID],
                             'rsvp1_list': [trial_1_rsvp_list],
                             'rsvp2_list': [trial_2_rsvp_list],
                             'rsvp1_response': [trial_1_rsvp_response],
-                            'rsvp2_response': [trial_2_rsvp_response]
-                            #'reaction_time_1': [trial_1_reaction_time],
-                            #'reaction_time_2': [trial_2_reaction_time]
+                            'rsvp2_response': [trial_2_rsvp_response],
+                            'RT1': [trial_1_reaction_time],
+                            'RT2': [trial_2_reaction_time]
 
                             })
 print(output_file)
